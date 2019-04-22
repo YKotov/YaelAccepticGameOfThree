@@ -1,0 +1,40 @@
+*{
+  box-sizing: border-box;
+}
+
+p{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  padding-bottom: 50px;
+  background: rgba(0,0,0,0.1);
+}
+
+.container{
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+div{
+  &.modal{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    padding: 20px;
+    opacity: 1;
+    z-index: 10;
+    &.close-configuration{
+      opacity: 0;
+      z-index: -10;
+      transition: all 0.6s;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+<div class="history" [class.modal]=true [class.close-configuration]=show (click)="closModal()">
+  <h4>Winners</h4>
+  <ul>
+    <li *ngFor="let winner of showHistory">{{winner.winner}} win on move {{winner.onMove}}</li>
+  </ul>
+</div>

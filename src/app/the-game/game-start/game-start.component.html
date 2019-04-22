@@ -1,0 +1,40 @@
+<div id="game-start" class="modal" [ngClass]="{'close-configuration': switcher}">
+  <div class="greetings">
+    <h3>Greetings!</h3>
+    <p>Welcome into my implementation of "The Game of Three"</p>
+    <p>Below you could see simple rules for this game:</p>
+
+    <ul>
+      <li>The Game starts after inserting your number or generation of random number</li>
+      <li>The receiving player must now add one of -1, 0 or 1 to get a number that is
+        divisible by 3 and then divide it
+      </li>
+      <li>The same rules apply until one of the players reaches the number 1 after division, which
+        ends the game
+      </li>
+      <li>The player reached the 1 is the winner of the game.</li>
+    </ul>
+
+    <p>Good luck!</p>
+  </div>
+  <div class="actions">
+    <label for="player-name">Player Name
+      <input type="text" id='player-name' name="player-name" [(ngModel)]="playerName">
+    </label>
+
+    <label for="game-number">
+      Game Number
+     <input type="number" id="game-number" [(ngModel)]="gameNumber" [value]="gameNumber" [ngClass]="classError" max="5" required>
+      <p class="error">{{errorNotice}}</p>
+     <button class="random" (click)="random()">GET RANDOM!</button>
+    </label>
+
+    <label for="first-turn">
+      The player goes first
+      <input type="checkbox" id="first-turn" [(ngModel)]="checked">
+    </label>
+
+    <button (click)="closeConfiguration(); start(playerName,gameNumber,checked);">START!</button>
+  </div>
+
+</div>

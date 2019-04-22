@@ -1,0 +1,27 @@
+.controllers{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
+  div{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  button {
+    display: block;
+    max-width: 200px;
+    width: 100%;
+    padding: 10px 20px;
+    text-align: center;
+    color: #fff;
+    background-color: #000;
+    transition: all 0.4s;
+    &:hover{
+      background-color:#fff;
+      color:  #000;
+    }
+  }
+}

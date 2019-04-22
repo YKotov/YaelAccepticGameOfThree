@@ -1,0 +1,13 @@
+<div class="log">
+  <h3>Game Start with {{start}}!!</h3>
+  <ol id="logs">
+    <li *ngFor="let item of log;">
+      <div *ngIf="item.game">
+        {{item.name}} walks by {{item.action}} left after turn: {{item.result}}.
+      </div>
+      <div *ngIf="!item.game">
+       Congratulation !!!  {{item.name}} win!
+      </div>
+    </li>
+  </ol>
+</div>

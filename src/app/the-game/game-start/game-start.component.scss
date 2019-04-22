@@ -1,0 +1,29 @@
+@import "~src/scss/general";
+#game-start{
+  .greetings{
+    margin-bottom: 20px;
+    ul{
+      //padding: 0;
+      li{
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .actions,label{
+    display: flex;
+    flex-direction: column;
+  }
+
+  label{
+    margin-bottom: 20px;
+  }
+
+  .invalid{
+    border: 2px dashed red;
+  }
+  .error{
+    color: red;
+    padding: 5px 0;
+  }
+}
