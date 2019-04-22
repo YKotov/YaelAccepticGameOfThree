@@ -11,6 +11,7 @@ import { GameStartComponent } from './the-game/game-start/game-start.component';
 import { GameHistoryComponent } from './the-game/game-history/game-history.component';
 import { GamePlayersComponent } from './the-game/game-players/game-players.component';
 import {FormsModule} from "@angular/forms";
+import {ModalService} from "./the-game/modals.service";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

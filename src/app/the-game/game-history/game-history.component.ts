@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, ElementRef} from '@angular/core';
+import {ModalService} from "../modals.service";
 
 @Component({
   selector: 'app-game-history',
@@ -8,15 +9,23 @@ import { Component, OnInit, Input } from '@angular/core';
 export class GameHistoryComponent implements OnInit {
 
   @Input() showHistory:Array<object>;
-  @Input() show:boolean;
+  private element: any;
 
-  constructor() { }
-
-  ngOnInit() {
-
-    this.show = true;
+  constructor(private modalService: ModalService, private el: ElementRef) {
+    this.element = el.nativeElement;
   }
-  closModal(){
-    this.show = true;
-  };
+
+  ngOnInit(): void {
+    document.body.appendChild(this.element);
+    this.modalService.add(this);
+  }
+  open(): void {
+    this.element.style.display = 'block';
+    document.body.classList.add('modal-open-history');
+  }
+
+  close(): void {
+    this.element.style.display = 'none';
+    document.body.classList.remove('modal-open');
+  }
 }

@@ -1,4 +1,5 @@
-import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, ElementRef} from '@angular/core';
+import {ModalService} from "../modals.service";
 
 @Component({
   selector: 'app-game-controls',
@@ -8,24 +9,23 @@ import {Component, OnInit, EventEmitter, Output} from '@angular/core';
 export class GameControlsComponent implements OnInit {
 
   @Output() step: any = new EventEmitter<{action: number, checked: boolean}>();
-  @Output() restartEmmit: any = new EventEmitter<any>();
-  @Output() showTopEmmit: any = new EventEmitter<any>();
+  @Output() restart: any = new EventEmitter<boolean>();
 
-  constructor() {
+  constructor(private modalService: ModalService) {
   }
 
-  ngOnInit() {
-  }
+  ngOnInit(){};
 
   gameStep(step,bool){
     this.step.emit({step,bool});
   }
 
-  restart(e){
-    this.restartEmmit.emit(e);
+  openModal(id: string) {
+    this.modalService.open(id);
   }
 
-  showTop(e){
-    this.showTopEmmit.emit(false);
+  cleanLog(e){
+    this.restart.emit(e);
   }
+
 }

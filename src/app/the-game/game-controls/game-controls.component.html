@@ -5,7 +5,7 @@
     <button (click)="gameStep(1, 1)">1</button>
   </div>
   <div>
-    <button (click)="restart(false)">Restart</button>
-    <button (click)="showTop(false)">Show History</button>
+    <button (click)="openModal('game-start'); cleanLog(false)">Restart</button>
+<!--    <button (click)="openModal('game-history')">Show History</button>-->
   </div>
 </section>

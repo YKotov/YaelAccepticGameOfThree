@@ -1,4 +1,5 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output, Input, ElementRef} from '@angular/core';
+import {ModalService} from "../modals.service";
 
 @Component({
   selector: 'app-game-start',
@@ -9,6 +10,8 @@ export class GameStartComponent implements OnInit {
 
   @Output() argsEmmit: any = new EventEmitter<{playerName: string, gameNumber: number, checked: boolean}>();
   @Input()  switcher: boolean;
+  @Input() id: string;
+  private element: any;
 
   public playerName: string = 'Player';
   public gameNumber: number;
@@ -18,9 +21,13 @@ export class GameStartComponent implements OnInit {
   public errorNotice:string = '';
   public classError: string = '';
 
-  constructor() { }
+  constructor(private modalService: ModalService, private el: ElementRef) {
+    this.element = el.nativeElement;
+  }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    document.body.appendChild(this.element);
+    this.modalService.add(this);
   }
 
   random(){
@@ -35,11 +42,16 @@ export class GameStartComponent implements OnInit {
 
   closeConfiguration(){
     if(this.gameNumber > 3) {
-      this.switcher = true;
+      this.element.style.display = 'none';
+      document.body.classList.remove('modal-open');
     }else {
       this.errorNotice = "Please insert number";
       this.classError = 'invalid';
     }
   }
 
+  open(): void {
+    this.element.style.display = 'block';
+    document.body.classList.add('modal-open');
+  }
 }

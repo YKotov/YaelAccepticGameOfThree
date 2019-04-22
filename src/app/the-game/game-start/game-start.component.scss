@@ -1,29 +1,10 @@
 @import "~src/scss/general";
-#game-start{
-  .greetings{
-    margin-bottom: 20px;
-    ul{
-      //padding: 0;
-      li{
-        margin-bottom: 10px;
-      }
-    }
-  }
+.modal{
 
-  .actions,label{
-    display: flex;
-    flex-direction: column;
-  }
+}
 
-  label{
-    margin-bottom: 20px;
-  }
 
-  .invalid{
-    border: 2px dashed red;
-  }
-  .error{
-    color: red;
-    padding: 5px 0;
-  }
+body.modal-open {
+  /* body overflow is hidden to hide main scrollbar when modal window is open */
+  overflow: hidden;
 }

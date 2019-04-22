@@ -1,12 +1,8 @@
 <section>
   <app-game-players [name]="name"></app-game-players>
-  <app-game-log
-    [start]=gameStartInt
-    [log]=log
-  ></app-game-log>
-  <app-game-controls (step)="gameStep($event,name)" (restartEmmit)="restart()" (showTopEmmit)="showTop($event)"></app-game-controls>
+  <app-game-log [start]=gameStartInt [log]=log></app-game-log>
+  <app-game-controls (step)="gameStep($event,name)" (restart)="restart($event)"></app-game-controls>
+  <app-game-history id="game-history"></app-game-history>
+  <app-game-start id="game-start" (argsEmmit)="getStartOptions($event)"></app-game-start>
 </section>
-
-<app-game-history [showHistory]=showHistory [show]="showTopEmmit"></app-game-history>
-<app-game-start (argsEmmit)="getStartOptions($event)" [switcher]="restartEmmit"></app-game-start>
 

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {isObject} from "util";
+import {ModalService} from "./modals.service";
 
 @Component({
   selector: 'app-the-game',
@@ -15,11 +16,9 @@ export class TheGameComponent {
   public checked: boolean;
   private comp: boolean = this.checked;
   private compStep: Array<number> = [-1, 0, 1];
-  public restartEmmit: boolean;
-  public showTopEmmit:boolean;
-  public showHistory:Array<object> = [];
+  private aRestart:number;
 
-  constructor() {
+  constructor(private modalService: ModalService) {
     this.name = 'Player'
   }
 
@@ -28,15 +27,13 @@ export class TheGameComponent {
     this.gameStartInt = props.gameNumber;
     this.comp = props.checked;
 
+    this.aRestart = props.gameNumber;
+
     if (!this.comp) {
       this.compTurn();
     }
   }
 
-  restart() {
-    this.restartEmmit = false;
-    this.log = [];
-  }
 
   static storeWinnerInLocal(name, onMove) {
     let winner = JSON.parse(localStorage.getItem('winner '));
@@ -51,8 +48,6 @@ export class TheGameComponent {
     };
 
     winner.push(winnerObj);
-
-    console.log(winner);
 
     localStorage.setItem('winner', JSON.stringify(winner));
   }
@@ -102,9 +97,8 @@ export class TheGameComponent {
     }, 400);
   }
 
-  showTop(props){
-    this.showTopEmmit = props;
-    this.showHistory = JSON.parse(localStorage.getItem('winner'));
-    console.log(this.showTopEmmit);
+  restart(e){
+    //Hack :(
+    location.href = '';
   }
 }
